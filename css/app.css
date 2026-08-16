@@ -1,0 +1,943 @@
+/* Fonts -------------------------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Variables ------------------------------------------------------------- */
+
+:root {
+    --pink:       #FFD6E8;
+    --red:        #b5192b;
+    --red-dark:   #8a1220;
+    --brown:      #6B3E26;
+    --cream:      #FFF8F0;
+    --text:       #3E2723;
+    --text-muted: #8a7264;
+    --border:     #e6d3bf;
+    --white:      #ffffff;
+    --shadow:     0 2px 10px rgba(0, 0, 0, 0.08);
+    --radius:     10px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4 {
+    margin: 0 0 0.5em;
+    line-height: 1.25;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+/* Layout --------------------------------------------------------------- */
+
+body, input, button, textarea, select {
+    font: 16px 'Roboto', sans-serif;
+    color: var(--text);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    grid: auto auto 1fr auto / auto;
+    background: var(--cream);
+    line-height: 1.6;
+}
+
+main {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+}
+
+main h1 {
+    font-family: 'Lilita One', cursive;
+    letter-spacing: 1px;
+    color: var(--red);
+}
+
+/* Header ----------------------------------------------------------------- */
+
+.top-bar {
+    height: auto;
+    background: var(--pink);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 20px;
+}
+
+.top-bar h1 {
+    font-family: "Dancing Script", cursive;
+    font-size: 13px;
+    color: var(--brown);
+    letter-spacing: 0.5px;
+    margin: 0;
+    font-weight: bold;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--cream);
+    padding: 14px 20px;
+    box-shadow: var(--shadow);
+    position: relative;
+    z-index: 2;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+header img.logo {
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--pink);
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+header h1 {
+    font-family: "Lilita One", cursive;
+    font-size: 25px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 0;
+    margin: 0;
+}
+
+header a {
+    color: var(--red);
+    text-decoration: none;
+}
+
+/* Primary decorative nav (Home / Full Menu / Order for Tomorrow) --------- */
+
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 12px 32px 4px;
+}
+
+.navbar a {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    height: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+.navbar a .flip {
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.navbar a .flip span {
+    display: block;
+    height: 16px;
+    line-height: 16px;
+}
+
+.navbar a .flip span:first-child {
+    color: var(--red);
+}
+
+.navbar a .flip span:last-child {
+    color: var(--brown);
+}
+
+.navbar a:hover .flip,
+.navbar a:focus-visible .flip {
+    transform: translateY(-16px);
+}
+
+/* Role-based nav bar (Product List / Cart / Manage Orders / Login etc.) -- */
+
+body > nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--brown);
+    padding: 10px 20px;
+}
+
+body > nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+}
+
+body > nav a:hover,
+body > nav a:focus-visible {
+    background: var(--white);
+    color: var(--brown);
+    border-color: var(--white);
+}
+
+/* Hero (index page) ------------------------------------------------------ */
+
+.hero {
+    text-align: center;
+    padding: 20px 0 8px;
+}
+
+.hero h1 {
+    font-family: 'Lilita One', cursive;
+    font-size: 48px;
+    color: var(--red);
+    letter-spacing: 1px;
+    display: inline-block;
+    transition: transform 0.15s ease-out;
+}
+
+.hero .tagline {
+    color: var(--text-muted);
+    font-size: 17px;
+    margin: 0;
+}
+
+/* Table -------------------------------------------------------------------- */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.table th, .table td {
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    text-align: left;
+}
+
+.table th {
+    color: var(--white);
+    background: var(--red);
+    font-weight: bold;
+}
+
+.table tr:hover td {
+    background: var(--pink);
+}
+
+.table td:has(.popup) {
+    position: relative;
+}
+
+.table .popup {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    translate: 5px -50%;
+    z-index: 1;
+    border: 1px solid var(--border);
+    background: var(--white);
+    box-shadow: var(--shadow);
+    display: none;
+}
+
+.table tr:hover .popup {
+    display: block;
+}
+
+.detail th {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+/* Sorting */
+.table th a {
+    color: inherit;
+    display: block;
+}
+
+.table th a.asc::after {
+    content: ' ▴';
+}
+
+.table th a.desc::after {
+    content: ' ▾';
+}
+
+/* Flash Message ----------------------------------------------------------- */
+
+#info {
+    position: fixed;
+    color: var(--white);
+    background: var(--brown);
+    border-radius: 8px;
+    padding: 10px 20px;
+    left: 50%;
+    translate: -50% 0;
+    z-index: 999;
+    box-shadow: var(--shadow);
+
+    top: -100px;
+    opacity: 0;
+}
+
+#info:not(:empty) {
+    animation: fade 5s;
+}
+
+@keyframes fade {
+      0% { top: -100px; opacity: 0; }
+     10% { top:  20px; opacity: 1; }
+     90% { top:  20px; opacity: 1; }
+    100% { top: -100px; opacity: 0; }
+}
+
+/* Buttons ------------------------------------------------------------------ */
+
+button, .button {
+    display: inline-block;
+    font: inherit;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    color: var(--white);
+    background: var(--red);
+    border: none;
+    border-radius: 999px;
+    padding: 9px 22px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.2s, transform 0.15s;
+}
+
+button:hover, .button:hover,
+button:focus-visible, .button:focus-visible {
+    background: var(--red-dark);
+    transform: translateY(-1px);
+}
+
+/* Form -------------------------------------------------------------------- */
+
+label > * {
+    vertical-align: text-top;
+}
+
+.form {
+    display: grid;
+    grid: auto / auto auto auto;
+    gap: 10px;
+    place-content: start;
+    place-items: center start;
+    background: var(--white);
+    padding: 24px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.form > label:not(:has(*)) {
+    place-self: stretch;
+    background: var(--pink);
+    color: var(--brown);
+    font-weight: bold;
+    padding: 8px 10px;
+    border-radius: 6px;
+}
+
+.form > section {
+    grid-column: 1 / -1;
+}
+
+.form input[type=text],
+.form input[type=email],
+.form input[type=password],
+.form input[type=number],
+.form input[type=search],
+.form textarea,
+.form select {
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--cream);
+}
+
+.form input:focus,
+.form textarea:focus,
+.form select:focus {
+    outline: 2px solid var(--red);
+    outline-offset: 1px;
+}
+
+.err {
+    color: var(--red);
+    font-size: 13px;
+}
+
+/* Photo Upload ------------------------------------------------------------ */
+
+label.upload img {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* Carousel (index page) --------------------------------------------------- */
+
+.carousel-section {
+    margin: 28px 0 12px;
+}
+
+.carousel-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 70vh;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--pink);
+    box-shadow: var(--shadow);
+}
+
+.carousel-slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.carousel-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    background: var(--red);
+    z-index: 5;
+}
+
+.carousel-description {
+    text-align: center;
+    margin-top: 18px;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-description.fading {
+    opacity: 0;
+}
+
+.carousel-description h2 {
+    font-family: 'Lilita One', cursive;
+    font-size: 26px;
+    color: var(--red);
+    margin-bottom: 6px;
+}
+
+.carousel-description p {
+    color: var(--text-muted);
+    max-width: 560px;
+    margin: 0 auto 14px;
+}
+
+.carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.carousel-status {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+}
+
+.carousel-status.is-paused {
+    color: var(--red);
+    border-color: var(--red);
+}
+
+.carousel-dot {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid var(--red);
+    background: var(--white);
+    color: var(--red);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.carousel-dot.active {
+    background: var(--red);
+    color: var(--white);
+}
+
+/* Demo accounts (index page) ---------------------------------------------- */
+
+.demo-accounts {
+    margin-top: 40px;
+}
+
+.demo-accounts h2 {
+    font-family: 'Lilita One', cursive;
+    color: var(--brown);
+    font-size: 20px;
+}
+
+/* Footer -------------------------------------------------------------------- */
+
+footer {
+    text-align: center;
+    background: var(--pink);
+    color: var(--brown);
+    padding: 16px 20px;
+}
+
+footer b {
+    color: var(--brown);
+}
+
+/* Responsive ---------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+    main {
+        padding: 20px 16px 48px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .navbar {
+        gap: 20px;
+    }
+
+    body > nav a {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+}
+/* Profile Page ------------------------------------------------------------ */
+.profile-wrapper {
+    max-width: 720px;
+    margin: 40px auto;
+    background: var(--white);
+    padding: 32px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.profile-form {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 18px 20px;
+    align-items: center;
+}
+
+/* 左侧粉色标签栏 */
+.profile-form .form-label {
+    background: var(--pink);
+    padding:14px 16px;
+    border-radius: var(--radius);
+    font-weight:700;
+    color: var(--brown);
+    text-align: right;
+}
+
+/* 头像特殊处理：跨两栏，居中 */
+.profile-form .avatar-row {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+.profile-form .avatar-row img {
+    border:3px solid var(--pink);
+    border-radius:50%;
+    object‑fit:cover;
+}
+
+.profile-form input[type="text"],
+.profile-form input[type="email"] {
+    width:100%;
+    padding:12px 14px;
+    background: var(--cream);
+    border:1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.profile-form .role-box {
+    background: var(--cream);
+    padding:12px 14px;
+    border-radius: var(--radius);
+}
+
+/* 按钮横跨全部两列，靠左/居左 */
+.profile-form .btn-row {
+    grid-column:1 / -1;
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px solid var(--border);
+}
+
+/*register*/
+.register-container {
+    font-family: 'Lilita One', cursive;
+    width: 575px;
+    margin: 5px auto 0;
+    text-align: center;
+}
+
+.register-container h2 {
+    font-size: 40px;
+    font-weight: normal;
+    color: var(--red);
+    margin: 0 0 10px;
+}
+
+.register-subtitle {
+    font-size: 17px;
+    color: var(--brown);
+    margin-bottom: 40px;
+}
+
+.register-form {
+    width: 100%;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    font-family: 'Lilita One';
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    border: 1px solid var(--red);
+    border-radius: 5px;
+    background: var(--cream);
+    font-size: 15px;
+    color: var(--brown);
+    outline: none;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    border: 2px solid var(--brown);
+}
+
+.input-group input::placeholder {
+    color: var(--brown);
+    opacity: 1;
+}
+
+.input-group label {
+    position: absolute;
+    left: 48px;
+    top: -8px;
+    background: var(--cream);
+    padding: 0 5px;
+    font-size: 12px;
+    color: var(--brown);
+    opacity: 0;
+}
+
+.input-group input:focus + label {
+    opacity: 1;
+}
+
+.register-form button {
+    width: 100%;
+    height: 60px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background: var(--red);
+    color: var(--cream);
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+}
+
+
+.register-form button:hover {
+    background: var(--brown);
+    color: var(--cream);
+}
+
+.login-text {
+    margin-top: 28px;
+    font-size: 16px;
+    color: var(--brown);
+}
+
+
+.login-text a {
+    color: var(--brown);
+    text-decoration: underline;
+}
+
+
+.login-text a:hover {
+    color: var(--brown);
+}
+
+
+/*Login */
+
+.login-container {
+    font-family: 'Lilita One', cursive;
+    width: 575px;
+    margin: 5px auto 0;
+    text-align: center;
+}
+
+.login-container h2 {
+    font-size: 40px;
+    font-weight: normal;
+    color: var(--red);
+    margin: 0 0 10px;
+}
+
+.login-subtitle {
+    font-size: 17px;
+    color: var(--brown);
+    margin-bottom: 40px;
+}
+
+.login-form {
+    width: 100%;
+}
+
+.login-form .input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.login-form .input-group input {
+    font-family: 'Lilita One';
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    border: 1px solid var(--red);
+    border-radius: 5px;
+    background: var(--cream);
+    font-size: 15px;
+    color: var(--brown);
+    outline: none;
+    box-sizing: border-box;
+}
+
+.login-form .input-group input:focus {
+    border: 2px solid var(--brown);
+}
+
+.login-form .input-group input::placeholder {
+    color: var(--brown);
+    opacity: 1;
+}
+
+.login-form .input-group label {
+    position: absolute;
+    left: 48px;
+    top: -8px;
+    background: var(--cream);
+    padding: 0 5px;
+    font-size: 12px;
+    color: var(--brown);
+    opacity: 0;
+}
+
+.login-form .input-group input:focus + label {
+    opacity: 1;
+}
+
+.login-form button {
+    width: 100%;
+    height: 60px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background: var(--red);
+    color: var(--cream);
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background: var(--brown);
+    color: var(--cream);
+}
+
+.register-text {
+    margin-top: 28px;
+    font-size: 16px;
+    color: var(--brown);
+}
+
+.register-text a {
+    color: var(--brown);
+    text-decoration: underline;
+}
+
+.register-text a:hover {
+    color: var(--brown);
+}
+
+/* Forgot Password */
+
+.forgot-container {
+    font-family: 'Lilita One', cursive;
+    width: 575px;
+    margin: 5px auto 0;
+    text-align: center;
+}
+
+.forgot-container h2 {
+    font-size: 40px;
+    font-weight: normal;
+    color: var(--red);
+    margin: 0 0 10px;
+}
+
+.forgot-subtitle {
+    font-size: 17px;
+    color: var(--brown);
+    margin-bottom: 40px;
+}
+
+.forgot-form {
+    width: 100%;
+}
+
+.forgot-form .input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.forgot-form .input-group input {
+    font-family: 'Lilita One';
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    border: 1px solid var(--red);
+    border-radius: 5px;
+    background: var(--cream);
+    font-size: 15px;
+    color: var(--brown);
+    outline: none;
+    box-sizing: border-box;
+}
+
+.forgot-form .input-group input:focus {
+    border: 2px solid var(--brown);
+}
+
+.forgot-form .input-group input::placeholder {
+    color: var(--brown);
+    opacity: 1;
+}
+
+.forgot-form .input-group label {
+    position: absolute;
+    left: 48px;
+    top: -8px;
+    background: var(--cream);
+    padding: 0 5px;
+    font-size: 12px;
+    color: var(--brown);
+    opacity: 0;
+}
+
+.forgot-form .input-group input:focus + label {
+    opacity: 1;
+}
+
+.forgot-form button {
+    width: 100%;
+    height: 60px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background: var(--red);
+    color: var(--cream);
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+}
+
+.forgot-form button:hover {
+    background: var(--brown);
+    color: var(--cream);
+}
+
+.back-login-text {
+    margin-top: 28px;
+    font-size: 16px;
+    color: var(--brown);
+}
+
+.back-login-text a {
+    color: var(--brown);
+    text-decoration: underline;
+}
+
+.back-login-text a:hover {
+    color: var(--red);
+}
+
